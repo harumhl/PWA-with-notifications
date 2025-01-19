@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAatmy0M7f4t4sIg0KAcxx3BXsNoBBRld4",
-  authDomain: "pwa-with-notifications.firebaseapp.com",
-  projectId: "pwa-with-notifications",
-  storageBucket: "pwa-with-notifications.firebasestorage.app",
-  messagingSenderId: "295759070602",
-  appId: "1:295759070602:web:967c2823d04958c0aeb473"
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: ""
 };
 
 // Initialize Firebase

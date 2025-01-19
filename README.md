@@ -35,7 +35,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### Deploy to Firebase
 
 1. `firebase login`
-1. `firebase deploy`
+1. `firebase deploy --public build`
 
 ### `npm run eject`
 
