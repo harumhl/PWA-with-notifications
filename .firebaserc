@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "pwa-with-notifications"
+    "default": "pwa-with-web-push-notifications"
   }
 }

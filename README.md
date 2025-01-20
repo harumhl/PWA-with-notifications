@@ -1,13 +1,22 @@
 # PWA-with-notifications
 PWA with notifications using Google Firebase
 
-# Getting Started with Create React App
+## How to Run
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Create `.env.local` file and put below environment variables
+```.env
+# Firebase hosting
+REACT_APP_FIREBASE_API_KEY=
+REACT_APP_FIREBASE_AUTH_DOMAIN=
+REACT_APP_FIREBASE_PROJECT_ID=
+REACT_APP_FIREBASE_STORAGE_BUCKET=
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
+REACT_APP_FIREBASE_APP_ID=
+```
+1. Fill up `.env.local` using env vars from https://console.firebase.google.com/u/0/project/<YOUR_PROJECT_NAME>/settings/general
+1. Run `npm run start`
 
 ## Available Scripts
-
-In the project directory, you can run:
 
 ### `npm start`
 
@@ -34,8 +43,10 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### Deploy to Firebase
 
+1. `npm run build`
 1. `firebase login`
 1. `firebase deploy --public build`
+    1. Or `firebase deploy  --public build --only hosting:pwa-with-web-push-notifications`
 
 ### `npm run eject`
 
