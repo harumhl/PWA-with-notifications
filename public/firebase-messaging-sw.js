@@ -5,13 +5,16 @@
 console.log("Hello from firebase service worker");
 
 self.addEventListener("message", (event) => {
-  // Receiving Firebase SDK config from main app
+  console.log(
+    "Firebase SDK config received from the web app - setting up Firebase SDK"
+  );
+
   const firebaseConfig = event.data.firebaseConfig;
   firebaseReceibesMessageInBackground(firebaseConfig);
 });
 
 if ("function" === typeof importScripts) {
-  // Importing Firebase SDK
+  console.log("Importing Firebase SDK");
   importScripts(
     "https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"
   );
@@ -22,7 +25,11 @@ if ("function" === typeof importScripts) {
 
 const firebaseReceibesMessageInBackground = (firebaseConfig) => {
   if ("function" === typeof importScripts) {
-    firebase.initializeApp(firebaseConfig);
+    try {
+      firebase.initializeApp(firebaseConfig);
+    } catch (e) {
+      firebase.getApp();
+    }
 
     const messaging = firebase.messaging();
 
@@ -39,10 +46,16 @@ const firebaseReceibesMessageInBackground = (firebaseConfig) => {
       };
 
       // Service Worker sends a notification to the browser
-      self.registration.showNotification(
-        notificationTitle,
-        notificationOptions
-      );
+      self.registration
+        .showNotification(notificationTitle, notificationOptions)
+        .then((r) => {
+          console.log(
+            "Should you have seen the notification?:",
+            r === undefined
+          );
+        })
+        .catch((e) => console.warn("Failed to send notification?:", e));
     });
+    console.log("Firebase setup seems good?");
   }
 };

@@ -1,6 +1,11 @@
 # PWA-with-notifications
 PWA with notifications using Google Firebase
 
+# AS OF JAN 2025, SAFARI STILL CANNOT HANDLE WEB PUSH (FROM FIREBASE)
+Reference: https://github.com/firebase/firebase-js-sdk/issues/8356
+
+Current implementation works on Chrome though.
+
 ## How to Run
 
 1. Create `.env.local` file and put below environment variables
