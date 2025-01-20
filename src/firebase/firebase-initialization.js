@@ -1,9 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getMessaging } from "firebase/messaging";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -15,3 +12,16 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const firebaseApp = initializeApp(firebaseConfig);
+export const firebaseMessaging = getMessaging(firebaseApp);
+
+navigator.serviceWorker.getRegistrations().then((registrations) => {
+  registrations.forEach((registration) => {
+    // Send Firebase SDK config to the firebase service worker
+    if (
+      registration.active &&
+      registration.active.scriptURL.includes("firebase-messaging-sw.js")
+    ) {
+      registration.active.postMessage({ firebaseConfig });
+    }
+  });
+});

@@ -12,9 +12,25 @@ REACT_APP_FIREBASE_PROJECT_ID=
 REACT_APP_FIREBASE_STORAGE_BUCKET=
 REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
 REACT_APP_FIREBASE_APP_ID=
+REACT_APP_FIREBASE_MEASUREMENT_ID=
+
+# Firebase messaging
+REACT_APP_FIREBASE_WEB_PUSH_CERT_VAPID_KEY=
+REACT_APP_FIREBASE_CLOUD_MESSAGING_API_AUTH_TOKEN=
 ```
 1. Fill up `.env.local` using env vars from https://console.firebase.google.com/u/0/project/<YOUR_PROJECT_NAME>/settings/general
+    1. And also from https://console.firebase.google.com/u/0/project/<YOUR_PROJECT_NAME>/settings/cloudmessaging
+    1. Sadly the only way I could get REACT_APP_FIREBASE_CLOUD_MESSAGING_API_AUTH_TOKEN was via Postman
+        1. Add https://fcm.googleapis.com/v1/projects/pwa-with-notifications/messages:send to POST URL
+        1. Go to Authorization tab and select Firebase Cloud Messaging API
+        1. Log into my gmail account and give access, then I should see the auth token starting `ya29....`
 1. Run `npm run start`
+
+# How to view Service Worker console (though not necessary)
+
+1. Go to `chrome://serviceworker-internals` on a new tab
+1. Choose the service worker using `firebase-messaging-sw.js` and start it if not already started.
+1. Click on Inspect
 
 ## Available Scripts
 

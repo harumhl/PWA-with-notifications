@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import { firebaseApp } from './firebase-hosting/firebase-initialization';
+import './firebase/firebase-initialization'; // start firebase setup
+import { FirebaseMessaging } from './firebase/firebase-messaging';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         >
           Learn React
         </a>
+        <FirebaseMessaging />
       </header>
     </div>
   );
